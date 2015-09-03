@@ -1,0 +1,13 @@
+{application, ms_logger, [
+    {description, "ms logger"},
+    {vsn, "0.1.0"},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib,
+        lager,
+        fast_disk_log
+    ]},
+    {mod, {ms_logger_app, []}},
+    {env, []}
+]}.

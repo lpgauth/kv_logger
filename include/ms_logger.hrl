@@ -1,0 +1,2 @@
+-define(APP, ms_logger).
+-define(DEFAULT_LOG_PATH, "log").
