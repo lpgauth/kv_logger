@@ -1,5 +1,7 @@
 # ms_logger
 
+[![Build Status](https://travis-ci.org/lpgauth/ms_logger.svg)](https://travis-ci.org/lpgauth/ms_logger)
+
 Erlang microservice example (logger)
 
 ### Requirements
