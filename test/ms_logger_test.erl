@@ -21,6 +21,9 @@ log() ->
     ok = ms_logger:log(?TIMESTAMP, <<"test">>),
     ok = ms_logger:log(?TIMESTAMP, <<"test">>),
 
+    fast_disk_log:sync(<<"2015-09-03-09">>),
+    timer:sleep(500),
+
     {ok, Log} = file:read_file(?LOG_FILE),
     ?assertEqual(<<"test\ntest\n">>, Log).
 

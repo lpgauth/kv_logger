@@ -14,7 +14,6 @@ log(Timestamp, Bin) ->
 
     case fast_disk_log:log(Name, Bin2) of
         ok ->
-            lager:error("DEBUG: ok", []),
             ok;
         {error, no_such_log} ->
             case open(Name) of
@@ -22,7 +21,7 @@ log(Timestamp, Bin) ->
                     fast_disk_log:log(Name, Bin2),
                     ok;
                 {error, Reason} ->
-                    lager:error("kv_logger open error: ~p~n", [Reason]),
+                    lager:error("ms_logger open error: ~p~n", [Reason]),
                     ok
             end
     end.
