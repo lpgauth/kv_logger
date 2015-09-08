@@ -6,12 +6,13 @@
 ]).
 
 %% public
--spec log(erlang:timestamp(), binary()) -> ok.
+-spec log(erlang:timestamp() | binary(), binary()) -> ok.
 
-log(Timestamp, Bin) ->
+log({_, _, _} = Timestamp, Bin) ->
     Name = name(Timestamp),
+    log(Name, Bin);
+log(Name, Bin) ->
     Bin2 = <<Bin/binary, "\n">>,
-
     case fast_disk_log:log(Name, Bin2) of
         ok ->
             ok;
