@@ -11,7 +11,8 @@ Erlang microservice example (logger)
 ## API
 
 ```
-ms_logger:log(Timstamp, Bin)
+ms_logger:log(Timestamp, Bin)
+ms_logger:log(LoggerName, Bin)
 ```
 
 ## Tests
