@@ -5,6 +5,8 @@
     log/2
 ]).
 
+-define(SAMPLE_RATE, 1).
+
 %% public
 -spec log(erlang:timestamp() | binary(), binary()) -> ok.
 
@@ -15,13 +17,15 @@ log(Name, Bin) ->
     Bin2 = <<Bin/binary, "\n">>,
     case fast_disk_log:log(Name, Bin2) of
         ok ->
+            ms_base_metric:increment(<<"ms_logger.ok">>, 1, ?SAMPLE_RATE),
             ok;
         {error, no_such_log} ->
             case open(Name) of
                 ok ->
-                    fast_disk_log:log(Name, Bin2),
-                    ok;
+                    ms_base_metric:increment(<<"ms_logger.ok">>, 1, ?SAMPLE_RATE),
+                    fast_disk_log:log(Name, Bin2);
                 {error, Reason} ->
+                    ms_base_metric:increment(<<"ms_logger.error">>, 1, ?SAMPLE_RATE),
                     lager:error("ms_logger open error: ~p~n", [Reason]),
                     ok
             end
