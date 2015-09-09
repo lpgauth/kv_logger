@@ -21,7 +21,7 @@
 ### log/2 ###
 
 <pre><code>
-log(Timestamp::<a href="erlang.md#type-timestamp">erlang:timestamp()</a>, Bin::binary()) -&gt; ok
+log(Timestamp::<a href="erlang.md#type-timestamp">erlang:timestamp()</a> | binary(), Bin::binary()) -&gt; ok
 </code></pre>
 <br />
 
